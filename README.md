@@ -5,7 +5,7 @@ Here is what it's all about. A Backend as a Service(BaaS) platform which I wante
 ### File Structure
 
 
-``
+
 nebula/
 ├── cmd/
 │   └── server/             # Main application entry point
@@ -39,4 +39,3 @@ nebula/
 ├── .env                    # Environment variables
 ├── go.mod                  # Go module file
 └── README.md               # Project documentation
-``
