@@ -5,8 +5,8 @@ import (
     "fmt"
     "log"
     "database/sql"
+	"nebula.local/config"
     _ "github.com/lib/pq"
-    "nebula/config"
 )
 
 var DB *sql.DB
