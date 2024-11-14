@@ -2,18 +2,25 @@
 package utils
 
 import (
+    "database/sql"
     "fmt"
     "log"
-    "database/sql"
-	"nebula.local/config"
+    "nebula.local/config"
     _ "github.com/lib/pq"
 )
 
 var DB *sql.DB
 
 func ConnectDB(cfg config.Config) {
-    psqlInfo := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable",
-        cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName)
+    var psqlInfo string
+
+    // Use DBUrl if provided, otherwise, construct it manually
+    if cfg.DBURL != "" {
+        psqlInfo = cfg.DBURL
+    } else {
+        psqlInfo = fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable",
+            cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName)
+    }
 
     var err error
     DB, err = sql.Open("postgres", psqlInfo)
