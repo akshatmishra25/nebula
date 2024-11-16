@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AUTOMATED_SECRET }}
           commit-message: Update from fork
           title: Update from fork
           body: This PR was automatically created from a push to the main branch of your fork.
