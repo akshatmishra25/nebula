@@ -2,6 +2,9 @@ import { TfiAlignJustify } from "react-icons/tfi";
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import Image from "next/image"
+import logo from "../../../public/nebula.png"
+
 
 const Navbar = () => {
   const navbarLinks = [
@@ -13,7 +16,11 @@ const Navbar = () => {
   return (
     <div className="w-full border-b-[1px] border-gray-500 text-white p-4">
       <div className="max-w-screen-2xl mx-auto justify-between px-4 flex items-center pl-8">
-        <h1 className="text-2xl uppercase font-bold">Nebula</h1>
+        <div className="flex flex-row">
+          <Image src = {logo} width = {80} alt = 'nebula-logo'/>
+          <h1 className="text-2xl uppercase font-bold mt-6">Nebula</h1>
+        </div>
+        
         <ul className="hidden lg:inline-flex items-center gap-3 uppercase text-md font-semibold">
           {navbarLinks.map((navLink, index) => {
             const [text, url] = Object.entries(navLink)[0]; // Destructure key-value pair
