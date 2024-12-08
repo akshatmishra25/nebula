@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Link from "next/link";
 
 
-var proj: Array<String> = ["blogApp"];
+let proj: Array<String> = ["blogApp"];
 export default function Home() {
   return (
     
