@@ -3,9 +3,7 @@
 import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
-
-
-let proj: Array<String> = ["blogApp"];
+const proj: Array<string> = ["blogApp"];
 export default function Home() {
   return (
     
