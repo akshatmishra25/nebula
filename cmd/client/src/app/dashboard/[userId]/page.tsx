@@ -13,11 +13,7 @@ import { useEffect } from "react";
 import { FaGithub } from "react-icons/fa";
 import { TfiAlignJustify } from "react-icons/tfi";
 
-export default function UserDashboardPage({
-  params,
-}: {
-  params: { userId: string };
-}) {
+export default function UserDashboardPage() {
   const { isSignedIn } = useUser();
   const router = useRouter();
 
