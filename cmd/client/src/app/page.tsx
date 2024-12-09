@@ -1,12 +1,12 @@
 "use client";
 
 import Head from "next/head";
-import Navbar from "./components/Navbar";
-import Banner from "./components/Banner";
+import Navbar from "../components/Navbar";
+import Banner from "../components/Banner";
 
 export default function Home() {
   return (
-    <div className="w-full bg-center grayscale hover:grayscale-0">
+    <div className="w-full grayscale hover:grayscale-0">
       <Head>
         <title>Nebula - Backend as a Service</title>
       </Head>
