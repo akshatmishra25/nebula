@@ -1,16 +1,28 @@
-// internal/utils/jwt.go
 package utils
 
 import (
-    "time"
-    "github.com/golang-jwt/jwt"
+    "github.com/golang-jwt/jwt/v4"
 )
 
-func GenerateJWT(userID int, secret string) (string, error) {
-    claims := jwt.MapClaims{}
-    claims["user_id"] = userID
-    claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
+var jwtSecret = []byte("your_secret_key") // Replace with a secure secret
 
-    token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-    return token.SignedString([]byte(secret))
+// ValidateJWT parses and validates a JWT token
+func ValidateJWT(tokenString string) (jwt.MapClaims, error) {
+    token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+        if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+            return nil, jwt.ErrInvalidKey
+        }
+        return jwtSecret, nil
+    })
+
+    if err != nil || !token.Valid {
+        return nil, err
+    }
+
+    claims, ok := token.Claims.(jwt.MapClaims)
+    if !ok {
+        return nil, jwt.ErrInvalidKey
+    }
+
+    return claims, nil
 }
