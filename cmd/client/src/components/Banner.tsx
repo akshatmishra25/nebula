@@ -15,7 +15,7 @@ const Banner = () => {
   });
   return (
     <div className="h-96 max-w-screen-2xl mx-auto flex flex-col justify-center items-center">
-      <h1 className="text-4xl text-white uppercase font-bold">NEBULA</h1>
+      <h1 className="text-4xl gradient-text uppercase font-bold">NEBULA</h1>
       <p className="text-lg font-semibold text-slate-200 mt-2">
         {text}
         <Cursor cursorBlinking cursorStyle="|" cursorColor="#ffaa17" />

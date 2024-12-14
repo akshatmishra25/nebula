@@ -21,3 +21,10 @@ body {
   background: var(--background);
   font-family: "Poppins", sans-serif;
 }
+
+.gradient-text {
+  background: linear-gradient(to right, #8385f7, #a855f7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
