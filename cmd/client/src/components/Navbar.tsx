@@ -1,62 +1,48 @@
-import { TfiAlignJustify } from "react-icons/tfi";
+import { NavbarLinkTypes } from "@/types/LinkTypes";
+import Image from "next/image";
 import Link from "next/link";
-import { SignedIn, SignedOut, SignInButton, useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
+import React from "react";
 
-const Navbar = () => {
-  const navbarLinks = [
-    { Examples: "https://discord.gg/93ksAWeNVW" },
-    { Github: "https://github.com/akshatmishra25/nebula" },
-    { Community: "https://discord.gg/93ksAWeNVW" },
-  ];
-  const router = useRouter();
-  const { user } = useUser();
+export const navbarLinks: NavbarLinkTypes[] = [
+  { name: "Examples", url: "https://discord.gg/93ksAWeNVW" },
+  { name: "Github", url: "https://github.com/akshatmishra25/nebula" },
+  { name: "Community", url: "https://discord.gg/93ksAWeNVW" },
+];
 
-  if (user) {
-    router.push("/");
-  }
-
+export default function Navbar() {
   return (
-    <div className="w-full flex border-b-[1px] border-gray-500 text-white p-4">
-      <div className="flex w-full justify-between px-4 items-center pl-8">
-        <Link href={"/"}>
-          <h1 className="text-2xl uppercase font-bold">Nebula</h1>
-        </Link>
-        <ul className="hidden lg:inline-flex items-center gap-3 uppercase text-md font-semibold">
-          {navbarLinks.map((navLink, index) => {
-            const [text, url] = Object.entries(navLink)[0]; // Destructure key-value pair
-
-            return (
-              <li key={index} className="hover:scale-105 cursor-pointer">
-                <Link href={url} target="_blank" rel="noopener noreferrer">
-                  {text}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <div className="hidden lg:inline-flex items-center">
-          <SignedOut>
-            <SignInButton>
-              <p
-                className="px-3 py-1 bg-white text-black text-md font-semibold rounded-xl 
-            hover:bg-darkRed hover:bg-neutral-200 cursor-pointer"
-              >
-                Sign In
-              </p>
-            </SignInButton>
-          </SignedOut>
-          <SignedIn>
-            <Link href={`/dashboard/${user?.id}`}>Dashboard</Link>
-          </SignedIn>
-        </div>
+    <div className="flex h-16 items-center justify-between w-full px-1">
+      <div className="flex items-center">
+        <Image
+          width={50}
+          height={50}
+          src="/nebula.png"
+          alt="Nebula-logo"
+          className="rounded-full"
+        />
+        <p className="text-xl gradient-text font-semibold">Nebula</p>
       </div>
-      <div className="inline-flex lg:hidden">
-        <TfiAlignJustify color="white" className="text-3xl" />
+
+      <div className="flex gap-2 items-center justify-center">
+        {navbarLinks.map((link, _) => (
+          <Link
+            className="hover:underline"
+            target="_blank"
+            href={link.url}
+            key={_}
+          >
+            {link.name}
+          </Link>
+        ))}
+      </div>
+      <div>
+        <Link
+          className="p-2 border hover:bg-gray-950 bg-gray-950/10 rounded-2xl"
+          href="/signup"
+        >
+          Signup
+        </Link>
       </div>
     </div>
   );
-};
-
-export default Navbar;
+}
