@@ -1,7 +1,8 @@
 import { NavbarLinkTypes } from "@/types/LinkTypes";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 export const navbarLinks: NavbarLinkTypes[] = [
   { name: "Examples", url: "https://discord.gg/93ksAWeNVW" },
@@ -10,8 +11,10 @@ export const navbarLinks: NavbarLinkTypes[] = [
 ];
 
 export default function Navbar() {
+  const [showHamMenu, setShowHamMenu] = useState<boolean>(false);
+
   return (
-    <div className="flex h-16 items-center justify-between w-full px-1">
+    <div className="flex h-16 border-b-[.5px] items-center justify-between w-full px-1">
       <div className="flex items-center">
         <Image
           width={50}
@@ -23,10 +26,10 @@ export default function Navbar() {
         <p className="text-xl gradient-text font-semibold">Nebula</p>
       </div>
 
-      <div className="flex gap-2 items-center justify-center">
+      <div className="hidden sm:flex gap-3 items-center justify-center">
         {navbarLinks.map((link, _) => (
           <Link
-            className="hover:underline"
+            className="hover:underline text-gray-400 font-semibold"
             target="_blank"
             href={link.url}
             key={_}
@@ -35,13 +38,19 @@ export default function Navbar() {
           </Link>
         ))}
       </div>
-      <div>
+      <div className="hidden sm:block">
         <Link
-          className="p-2 border hover:bg-gray-950 bg-gray-950/10 rounded-2xl"
+          className="py-2 px-3 border hover:shadow-md hover:border-gray-400 rounded-xl"
           href="/signup"
         >
-          Signup
+          Sign In
         </Link>
+      </div>
+      <div
+        onClick={() => setShowHamMenu(!showHamMenu)}
+        className="sm:hidden block cursor-pointer"
+      >
+        {showHamMenu ? <X /> : <Menu />}
       </div>
     </div>
   );
