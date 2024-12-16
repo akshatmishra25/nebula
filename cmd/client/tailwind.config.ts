@@ -13,14 +13,14 @@ export default {
         foreground: "var(--foreground)",
       },
       animation: {
-        "moving-gradient": "moving-gradient linear 5s infinite"
+        "moving-gradient": "moving-gradient linear 5s infinite",
       },
       keyframe: {
         "moving-gradient": {
-          "0%": {backgroundPosition: "0% 50%"},
-          "50%": {backgroundPosition: "100% 50%"},
-          "100%": {backgroundPosition: "0% 50%"},
-        }
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
       },
     },
   },

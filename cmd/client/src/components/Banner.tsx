@@ -1,26 +1,29 @@
 "use client";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 const Banner = () => {
-  const [text] = useTypewriter({
-    words: [
-      "your all-in-one backend solution...",
-      "easily manage projects and storage with custom services.",
-      "Ship your dream projects.",
-    ],
-    loop: true,
-    typeSpeed: 25,
-    deleteSpeed: 15,
-    delaySpeed: 600,
-  });
   return (
-    <div className="h-96 max-w-screen-2xl mx-auto flex flex-col justify-center items-center">
-      <h1 className="text-4xl gradient-text uppercase font-bold">NEBULA</h1>
-      <p className="text-lg font-semibold text-slate-200 mt-2">
-        {text}
-        <Cursor cursorBlinking cursorStyle="|" cursorColor="#ffaa17" />
-      </p>
-    </div>
+    <header className="flex-grow flex items-center bg-black justify-center text-center px-6 py-16">
+      <div className="max-w-3xl">
+        <h1 className="text-5xl font-extrabold gradient-text mb-6">
+          Powerful Backend Infrastructure, Zero Hassle
+        </h1>
+        <p className="text-xl text-gray-400 mb-8">
+          Nebula provides scalable, secure, and lightning-fast backend services
+          to help developers focus on building amazing products.
+        </p>
+        <div className="space-x-4">
+          <button
+            className="px-6 py-3 rounded-md font-semibold hover:bg-blue-50
+          bg-gradient-to-r from-violet-600 to-purple-500 text-white"
+          >
+            Start Free Trial
+          </button>
+          <button className="border border-white text-white px-6 py-3 rounded-md hover:text-purple-500 hover:border-purple-500">
+            View Documentation
+          </button>
+        </div>
+      </div>
+    </header>
   );
 };
 
