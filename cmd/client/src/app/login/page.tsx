@@ -4,11 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaBook, FaGithub } from "react-icons/fa";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+export interface UserLoginInputFormat {
+  email: string;
+  password: string;
+}
 
 export default function LoginPage() {
+  const { register, handleSubmit } = useForm<UserLoginInputFormat>();
+
+  const onSubmit: SubmitHandler<UserLoginInputFormat> = (data) =>
+    console.log(data);
+
   return (
-    <main className="flex flex-col gap-6 w-full items-center justify-center p-2">
-      <nav className="flex w-full px-1 justify-between items-center">
+    <main className="flex flex-col bg-gradient-to-l from-black via-gray-900 to-black gap-6 w-full items-center min-h-screen p-2">
+      <header className="flex w-full px-1 justify-between items-center border-b border-white">
         <Link
           className="flex items-center"
           href="/"
@@ -27,43 +38,46 @@ export default function LoginPage() {
         </Link>
 
         <Link
-          className="flex p-1 gap-2 items-center justify-center text-white"
+          className="flex p-1 gap-2 items-center justify-center text-white hover:text-purple-500"
           href="/docs"
           aria-label="View documentation"
         >
           <FaBook size="16" />
           <span>Docs</span>
         </Link>
-      </nav>
-      <div className="shadow-lg shadow-purple-500 transition-all duration-150 p-6 rounded-2xl text-white w-full max-w-md">
-        <div className="p-2 w-full mb-4">
+      </header>
+      <div className="shadow-lg bg-gray-950 shadow-purple-500 mb-12 transition-all duration-150 px-5 py-3 rounded-2xl text-white w-full max-w-[26rem]">
+        <div className="p-2 w-full mb-3">
           <p className="text-2xl font-bold">Welcome Back !!</p>
           <p className="text-sm text-purple-500">Login to your account</p>
         </div>
         <button
-          className="flex w-full border p-3 rounded-3xl items-center justify-center gap-2 hover:border-gray-500 transition-all mb-6"
+          className="flex w-full border p-3 rounded-3xl items-center justify-center gap-2 hover:border-purple-500 transition-all mb-4"
           aria-label="Sign up with GitHub"
         >
           <FaGithub size="20" />
           <span>Continue with GitHub</span>
         </button>
-        <div className="w-full flex items-center gap-3 justify-center text-gray-400">
-          <div className="w-full h-px bg-gray-700" />
+        <div className="w-full flex items-center gap-2 justify-center text-gray-400">
+          <div className="w-full h-px bg-purple-500" />
           <p>or</p>
-          <div className="w-full h-px bg-gray-700" />
+          <div className="w-full h-px bg-purple-500" />
         </div>
-        <form className="mt-6 space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-3">
           <div className="flex flex-col gap-3">
             <div className="flex flex-col gap-1">
               <label htmlFor="email" className="text-sm">
                 Email
               </label>
               <input
+                {...register("email", {
+                  required: true,
+                  pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                })}
                 type="email"
                 id="email"
                 name="email"
-                placeholder="example@abc.com"
-                required
+                placeholder="abc@example.com"
                 className="font-light bg-transparent text-white border-[0.5px] border-black hover:border-purple-500 rounded-lg px-3 py-2 focus:outline-none"
               />
             </div>
@@ -72,11 +86,11 @@ export default function LoginPage() {
                 Password
               </label>
               <input
+                {...register("password", { minLength: 6, maxLength: 30 })}
                 type="password"
                 id="password"
                 name="password"
                 placeholder="123456"
-                required
                 className="font-light bg-transparent text-white border-[0.5px] border-black hover:border-purple-500 rounded-lg px-3 py-2 focus:outline-none"
               />
             </div>

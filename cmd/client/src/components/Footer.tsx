@@ -1,12 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t text-white py-6 px-4">
-      <div className="px-3 mx-auto flex justify-between items-center">
-        <div>
-          <h4 className="text-2xl gradient-text font-bold mb-2">Nebula</h4>
+    <footer className="border-t text-white py-4 px-3">
+      <div className="px-3 flex gap-2 sm:gap-0 flex-col sm:flex-row justify-between sm:items-center">
+        <div className="flex flex-col gap-1">
+          <h4 className="text-2xl gradient-text font-bold">Nebula</h4>
           <p className="text-gray-400">
             © 2024 Nebula Technologies. All rights reserved.
           </p>
