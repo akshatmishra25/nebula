@@ -17,7 +17,7 @@ export default function SingUpPage() {
     console.log(data);
 
   return (
-    <main className="flex flex-col bg-gradient-to-l from-black via-gray-900 to-black gap-6 w-full items-center justify-center p-2">
+    <main className="flex flex-col min-h-screen bg-gradient-to-l from-black via-gray-900 to-black gap-6 w-full items-center p-2">
       <header className="flex w-full px-1 justify-between items-center border-b border-white">
         <Link
           className="flex items-center"
@@ -48,7 +48,7 @@ export default function SingUpPage() {
 
       <div className="shadow-lg bg-gray-950 shadow-purple-500 transition-all duration-150 px-5 py-3 rounded-2xl text-white w-full max-w-[26rem]">
         <div className="p-2 w-full mb-2">
-          <p className="text-2xl font-bold">Let&apos; get started !!</p>
+          <p className="text-2xl font-bold">Let&apos;s get started !!</p>
           <p className="text-sm text-purple-500">Create your account</p>
         </div>
 
